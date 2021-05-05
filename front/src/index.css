@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0px;
+}
+
+.item-done {
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.application {
+  height: 100vh;
+}
