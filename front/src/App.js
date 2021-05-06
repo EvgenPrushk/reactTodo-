@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AppHeader from "./AppHeader";
 import TodoList from "./TodoList";
-import { getAll, creteTodo } from "./RequestManager";
+import { getAll, creteTodo, updateTodo, removeTodo } from "./RequestManager";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -9,7 +9,9 @@ function App() {
   //
 
   const [newTodo, setNewTodo] = useState("");
+
   const [showActions, setShowActions] = useState(false);
+
   useEffect(() => {
     setShowActions(todos.some((todo) => todo.selected));
   }, [todos]);
@@ -26,13 +28,22 @@ function App() {
       if (todo.selected) {
         todo.done = true;
         todo.selected = false;
+        updateTodo(todo);
       }
     }
+
     setTodos([...todos]);
   };
 
   const removeSelected = () => {
-    setTodos(todos.filter((todo) => !todo.selected));
+    setTodos(
+      todos.filter((todo) => {
+        if (todo.selected) {
+          removeTodo(todo);
+        }
+        return !todo.selected;
+      })
+    );
   };
 
   const handlerNewTodo = (e) => {
@@ -44,9 +55,8 @@ function App() {
         selected: false,
         content: newTodo,
       };
-     
 
-      creteTodo(todo).then(todo => setTodos([todo, ...todos]));
+      creteTodo(todo).then((todo) => setTodos([todo, ...todos]));
       setNewTodo("");
     }
   };

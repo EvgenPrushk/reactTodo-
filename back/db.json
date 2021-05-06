@@ -1,80 +1,11 @@
 {
   "todoItems": [
     {
-      "id": 1,
-      "done": false,
-      "created": 1592004785892,
-      "content": "Или например ничего",
-      "selected": false
-    },
-    {
-      "id": 3,
-      "done": true,
-      "created": 1592005411641,
-      "content": "1123",
-      "selected": false
-    },
-    {
-      "id": 4,
-      "done": true,
-      "created": 1592005436261,
-      "content": "фыва",
-      "selected": false
-    },
-    {
-      "id": 5,
-      "done": false,
-      "created": 1592005496835,
-      "content": "dasf"
-    },
-    {
-      "id": 6,
-      "done": false,
-      "created": 1592037750109,
-      "content": "123"
-    },
-    {
       "id": 7,
       "done": false,
       "created": 1592038135425,
       "content": "asdf",
       "selected": false
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "123",
-      "id": 8
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "Я не люблю яблоки, я же не бог смерти",
-      "id": 9
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "al;skdjf;laksdjf;lkasjd;lfajsd;lf",
-      "id": 10
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "asdfas",
-      "id": 11
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "222",
-      "id": 12
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "222",
-      "id": 13
     },
     {
       "done": false,
@@ -87,48 +18,6 @@
       "selected": false,
       "content": "23333311",
       "id": 15
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "222",
-      "id": 16
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "233",
-      "id": 17
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "2233",
-      "id": 18
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "Мама мыла раму",
-      "id": 19
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "привет",
-      "id": 20
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "мрын",
-      "id": 21
-    },
-    {
-      "done": false,
-      "selected": false,
-      "content": "555",
-      "id": 22
     }
   ]
 }
