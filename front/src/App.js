@@ -61,6 +61,16 @@ function App() {
     }
   };
 
+  const editTodo = (todo) => {
+    for (const todo of todos) {
+      if ((todo.id = editTodo.id)) {
+        todo.content = editTodo.content;
+      }
+    }
+
+    setTodos(...todos);
+  };
+
   return (
     <div className="py-1 application container d-flex flex-column align-items-stretch">
       <div className="card h-100">

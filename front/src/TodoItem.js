@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function TodoItem(props) {
+  const [editMode, setEditMode] = useState(false);
+  if (editMode) {
+    return (
+      <li className="list-group-item d-flex justify-content-between" focus>
+        <input
+          type="text"
+          className="form-control"
+          value={props.todo.content}
+          onChange={e => e.target.value}
+        />
+      </li>
+    );
+  }
   return (
-    <li className="list-group-item d-flex justify-content-between">
+    <li
+      className="list-group-item d-flex justify-content-between"
+      onDoubleClick={() => setEditMode(true)}
+    >
       <label>
         <input
           type="checkbox"
