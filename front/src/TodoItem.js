@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 export default function TodoItem(props) {
   const [editMode, setEditMode] = useState(false);
+
   if (editMode) {
     return (
       <li className="list-group-item d-flex justify-content-between" focus>
@@ -9,7 +10,12 @@ export default function TodoItem(props) {
           type="text"
           className="form-control"
           value={props.todo.content}
-          onChange={e => e.target.value}
+          onChange={(e) =>
+            props.editTodo({
+              ...props.todo,
+              content: e.target.value,
+            })
+          }
         />
       </li>
     );

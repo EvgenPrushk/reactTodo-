@@ -61,10 +61,10 @@ function App() {
     }
   };
 
-  const editTodo = (todo) => {
+  const editTodo = editedTodo => {
     for (const todo of todos) {
-      if ((todo.id = editTodo.id)) {
-        todo.content = editTodo.content;
+      if ((todo.id = editedTodo.id)) {
+        todo.content = editedTodo.content;
       }
     }
 
@@ -106,7 +106,7 @@ function App() {
         )}
 
         <div className="overflow-auto">
-          <TodoList todos={todos} toggleTodo={toggleTodo} />
+          <TodoList todos={todos} toggleTodo={toggleTodo} editTodo={editTodo} />
         </div>
       </div>
     </div>
