@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AppHeader from "./AppHeader";
 import TodoList from "./TodoList";
+
 import { getAll, creteTodo, updateTodo, removeTodo } from "./RequestManager";
 
 function App() {
@@ -12,9 +13,7 @@ function App() {
 
   const [showActions, setShowActions] = useState(false);
 
-  useEffect(() => {
-    setShowActions(todos.some((todo) => todo.selected));
-  }, [todos]);
+  useEffect(() => setShowActions(todos.some((todo) => todo.selected)), [todos]);
 
   const toggleTodo = (todoId) => {
     const todo = todos.find((todo) => todo.id === todoId);
@@ -61,14 +60,15 @@ function App() {
     }
   };
 
-  const editTodo = editedTodo => {
+  const editTodo = (editedTodo) => {
+    console.log(editedTodo);
     for (const todo of todos) {
-      if ((todo.id = editedTodo.id)) {
+      if ((todo.id === editedTodo.id)) {
         todo.content = editedTodo.content;
       }
     }
 
-    setTodos(...todos);
+    setTodos([...todos]);
   };
 
   return (
