@@ -3,12 +3,13 @@ import AppHeader from "./AppHeader";
 import TodoList from "./TodoList";
 
 import { getAll, creteTodo, updateTodo, removeTodo } from "./RequestManager";
+import useTodos from "./useTodos";
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  useEffect(() => getAll().then((todos) => setTodos(todos)), []);
+  // const [todos, setTodos] = useState([]);
+  // useEffect(() => getAll().then((todos) => setTodos(todos)), []);
   //
-
+  const [todos, dispatch] = useTodos();
   const [newTodo, setNewTodo] = useState("");
 
   const [showActions, setShowActions] = useState(false);
@@ -19,7 +20,7 @@ function App() {
     const todo = todos.find((todo) => todo.id === todoId);
     todo.selected = !todo.selected;
     // new station array todos [...todos]
-    setTodos([...todos]);
+    // setTodos([...todos]);
   };
 
   const setDone = () => {
@@ -31,18 +32,18 @@ function App() {
       }
     }
 
-    setTodos([...todos]);
+    // setTodos([...todos]);
   };
 
   const removeSelected = () => {
-    setTodos(
-      todos.filter((todo) => {
-        if (todo.selected) {
-          removeTodo(todo);
-        }
-        return !todo.selected;
-      })
-    );
+    // setTodos(
+    //   todos.filter((todo) => {
+    //     if (todo.selected) {
+    //       removeTodo(todo);
+    //     }
+    //     return !todo.selected;
+    //   })
+    // );
   };
 
   const handlerNewTodo = (e) => {
@@ -55,7 +56,7 @@ function App() {
         content: newTodo,
       };
 
-      creteTodo(todo).then((todo) => setTodos([todo, ...todos]));
+      // creteTodo(todo).then((todo) => setTodos([todo, ...todos]));
       setNewTodo("");
     }
   };
@@ -63,12 +64,12 @@ function App() {
   const editTodo = (editedTodo) => {
     console.log(editedTodo);
     for (const todo of todos) {
-      if ((todo.id === editedTodo.id)) {
+      if (todo.id === editedTodo.id) {
         todo.content = editedTodo.content;
       }
     }
 
-    setTodos([...todos]);
+    // setTodos([...todos]);
   };
 
   return (
