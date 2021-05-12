@@ -1,16 +1,12 @@
-import React, { useState } from "react";
-import { updateTodo } from "./RequestManager";
+import React, { useState, useContext } from "react";
+import Context from "./Context";
 
 export default function TodoItem(props) {
   const [editMode, setEditMode] = useState(false);
-
-  const saveTodo = (e) => {
-    if (e.key === "Enter") {
-      setEditMode(false);
-      //save todo in server
-      updateTodo(props.todo);
-    }
-  };
+  //create new local storage
+  const [input, setInput] = useState(props.todo.content)
+  // use hyk useContext and  the element we went to reach
+  const { dispatch } = useContext(Context);
 
   if (editMode) {
     return (
@@ -18,13 +14,22 @@ export default function TodoItem(props) {
         <input
           type="text"
           className="form-control"
-          value={props.todo.content}
-          onChange={(e) => props.editTodo({
-            ...props.todo,
-            content: e.target.value,
-          })}
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyUp={e =>{
+            if (e.key === "Enter") {
+              setEditMode(false);
 
-          onKeyUp={saveTodo}
+              dispatch({
+                type: "UPDATE",
+                payload: {
+                  ...props.todo,
+                  // replace content = input
+                  content: input,
+                }
+              })
+            }
+          }}
         />
       </li>
     );
@@ -39,10 +44,18 @@ export default function TodoItem(props) {
           type="checkbox"
           className="mr-3"
           checked={props.todo.selected}
-          onChange={(e) => props.toggleTodo(props.todo.id)}
+          onChange={(e) =>
+            dispatch({
+              type: "SET_SELECT",
+              payload: {
+                id: props.todo.id,
+                selected: !props.todo.selected,
+              },
+            })
+          }
         />
         <span className={props.todo.done ? "item-done" : ""}>
-          {props.todo.content}{" "}
+          {props.todo.content}
         </span>
       </label>
       <small className="text-muted">12.04.2020</small>
