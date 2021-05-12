@@ -58,7 +58,7 @@ export default function TodoItem(props) {
           {props.todo.content}
         </span>
       </label>
-      <small className="text-muted">12.04.2020</small>
+      <small className="text-muted">12.05.2021</small>
     </li>
   );
 }

@@ -1,15 +1,13 @@
 import { useReducer, useEffect } from "react";
 import { getAll, creteTodo, updateTodo, removeTodo } from "./RequestManager";
 
-function reducer(state, action) {
-  console.log({ action });
+function reducer(state, action) { 
   switch (action.type) {
     case "INIT":
       return action.payload;
 
     case "SET_SELECT": {
       const newState = [];
-
       for (const todo of state) {
         if (todo.id === action.payload.id) {
           todo.selected = action.payload.selected;
@@ -17,7 +15,6 @@ function reducer(state, action) {
         // only copy State (todo)
         newState.push({ ...todo });
       }
-
       // return new State (todo)
       return newState;
     }
@@ -33,6 +30,8 @@ function reducer(state, action) {
         // only copy State (todo)
         newState.push({ ...todo });
       }
+      
+      return newState;
     }
 
     case "ADD":
